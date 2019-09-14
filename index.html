@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="wrapper">
+    <form method="post" action="index.php">
+      <h2>addStudents</h2>
+      Action<input type="text" name="action" value="addStudents">
+      Names <input type="text" name="names" /> Api_key
+      <input type="text" name="api_key" value="batya" />
+      <input type="submit" />
+    </form>
+
+    <form method="post" action="index.php">
+      <h2>getStudents</h2>
+      Action<input type="text" name="action" value="getStudents">
+      Api_key <input type="text" name="api_key" value="batya" />
+      <input type="submit" />
+    </form>
+    <form method="post" action="index.php">
+      <h2>addList</h2>
+      Action<input type="text" name="action" value="addList">
+      Name <input type="text" name="nameOfList" /> Items
+      <input type="text" name="items" /> Api_key
+      <input type="text" name="api_key" value="batya" />
+      <input type="submit" />
+    </form>
+    <form method="post" action="index.php">
+      <h2>getLists</h2>
+      Action<input type="text" name="action" value="getLists">
+      Long <input type="text" name="long">
+      Api_key <input type="text" name="api_key" value="batya" />
+      <input type="submit" />
+    </form>
+    <form method="post" action="index.php">
+      <h2>getList</h2>
+      Action<input type="text" name="action" value="getList">
+      ID <input type="text" name="id">
+      Api_key <input type="text" name="api_key" value="batya" />
+      <input type="submit" />
+    </form>
+    <form method="post" action="index.php">
+        <h2>editStudents</h2>
+        Action<input type="text" name="action" value="editStudents">
+        Students <input type="text" name="students">
+        Api_key <input type="text" name="api_key" value="batya" />
+        <input type="submit" />
+      </form>
+  <form method="post" action="index.php">
+      <h2>delStudents</h2>
+      Action<input type="text" name="action" value="delStudents">
+      Students <input type="text" name="students">
+      Api_key <input type="text" name="api_key" value="batya" />
+      <input type="submit" />
+    </form>
+    <form method="post" action="index.php">
+        <h2>takeItem</h2>
+        Action<input type="text" name="action" value="takeItem">
+        List_id <input type="text" name="list_id">
+        Item_id <input type="text" name="item_id">
+        Api_key <input type="text" name="api_key" value="batya" />
+        <input type="submit" />
+      </form>
+      <form method="post" action="index.php">
+          <h2>giveItem</h2>
+          Action<input type="text" name="action" value="giveItem">
+          List_id <input type="text" name="list_id">
+          Item_id <input type="text" name="item_id">
+          Student_id <input type="text" name="student_id">
+          Api_key <input type="text" name="api_key" value="batya" />
+          <input type="submit" />
+        </form>
+  </div>
+  </body>
+</html>
