@@ -1,7 +1,6 @@
 <?php
 include "connection.php";
 
-
 checkPermission();
 switch ($_POST["action"]) {
     case "addStudents":
