@@ -67,12 +67,10 @@ function addList()
     $items = explode(".", $_POST["items"]);
     $str = "";
     foreach ($items as $key => $value) {
-        if (end($items) == $value) {
-            $str = $str . "(" . "@lastID," . "'$value'" . ");";
-            break;
-        }
-        $str = $str . "(" . "@lastID," . "'$value'" . "),"; // add number item in list
-    } //concat ;
+        $str = $str . "(" . "@lastID," . "'$value'" . "),";
+    }
+    $str[-1] = ";";
+    var_dump($str);
     $insertItems = "INSERT INTO items (list_id,name) VALUES $str";
     if (!mysqli_multi_query($conn, $insertInLists . $setLastId . $insertItems)) {
         printf("Error: %s\n", mysqli_error($conn));
