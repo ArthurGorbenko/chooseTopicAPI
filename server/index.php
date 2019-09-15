@@ -26,10 +26,13 @@ switch ($_POST["action"]) {
         $userInfo["role_id"] > 1 && editStudents();
         break;
     case "takeItem":
-        $userInfo["role_id"] >= 1 && procceedItem($userInfo["id"]);
+        $userInfo["role_id"] >= 1  && procceedItem($userInfo["id"]);
         break;
     case "giveItem":
-        $userInfo["role_id"] > 1 && procceedItem($_POST["student_id"]);
+        $userInfo["role_id"] > 1 
+            ? true : 
+            exit("You are'n allowed give items.") 
+            && procceedItem($_POST["student_id"]);
         break;
     case "delStudents":
         $userInfo["role_id"] > 1 && delStudents();
@@ -84,9 +87,7 @@ function getLists()
         $sql = "SELECT * FROM lists";
         $lists = queryToDB($sql, false);
         foreach ($lists as $key => $value) {
-            echo "<br>";
-            $id = "id";
-            $sql = "SELECT * FROM items WHERE list_id=$value[$id];";
+            $sql = "SELECT * FROM items WHERE list_id='" . $value['id'] . "';";
             $lists[$key]['items'] = queryToDB($sql);
         }
         echo json_encode($lists);
@@ -150,6 +151,9 @@ function queryToDB($query)
         printf("Error: %s\n", mysqli_error($conn));
         exit();
     }
+    if (is_bool($result)) {
+        return;
+    }
     $rows = array();
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
@@ -160,8 +164,8 @@ function queryToDB($query)
 function identifyUser($key)
 {
     $sql = "SELECT id,role_id FROM students WHERE api_key='$key'";
-    $result = queryToDB($sql,false);
-    if($result == null) {
+    $result = queryToDB($sql, false);
+    if ($result == null) {
         return null;
     } else {
         return $result[0];
