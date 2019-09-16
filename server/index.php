@@ -26,13 +26,12 @@ switch ($_POST["action"]) {
         $userInfo["role_id"] > 1 && editStudents();
         break;
     case "takeItem":
-        $userInfo["role_id"] >= 1  && procceedItem($userInfo["id"]);
+        $userInfo["role_id"] >= 1 && procceedItem($userInfo["id"]);
         break;
     case "giveItem":
-        $userInfo["role_id"] > 1 
-            ? true : 
-            exit("You are'n allowed give items.") 
-            && procceedItem($_POST["student_id"]);
+        $userInfo["role_id"] > 1
+            ? procceedItem($_POST["student_id"]) :
+            exit("You aren't allowed give items.");
         break;
     case "delStudents":
         $userInfo["role_id"] > 1 && delStudents();
